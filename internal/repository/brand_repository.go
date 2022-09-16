@@ -11,6 +11,7 @@ import (
 )
 
 type BrandRepository interface {
+	// insert to brand table
 	Create(ctx context.Context, name string) (*entity.BrandEntity, error)
 }
 
@@ -29,12 +30,15 @@ func NewBrandRepository(db *sql.DB) BrandRepository {
 	}
 }
 
+//Insert to db
 func (repo brandRepository) Create(ctx context.Context, name string) (*entity.BrandEntity, error) {
 
+	//check name duplicate or not
 	if err := repo.validateBrandNameDuplicate(ctx, name); err != nil {
 		return nil, err
 	}
 
+	//save db
 	createdDate := time.Now()
 	result, err := repo.db.ExecContext(
 		ctx,
@@ -46,6 +50,7 @@ func (repo brandRepository) Create(ctx context.Context, name string) (*entity.Br
 		return nil, response.DatabaseError
 	}
 
+	//get id
 	id, err := result.LastInsertId()
 	if err != nil {
 		log.Printf("brandRepository.Create() - result.LastInsertId() error : %v", err)
@@ -66,11 +71,14 @@ func (repo brandRepository) validateBrandNameDuplicate(ctx context.Context, name
 
 	switch err {
 	case nil:
+		//name already exist
 		log.Printf("brandRepository.validateBrandNameDuplicate() error : %v", response.BrandNameDuplicate)
 		return response.BrandNameDuplicate
 	case sql.ErrNoRows:
+		//name not exist
 		return nil
 	default:
+		//error db
 		log.Printf("brandRepository.validateBrandNameDuplicate() error : %v", err)
 		return response.DatabaseError
 	}

@@ -13,6 +13,8 @@ import (
 	db "github.com/alviankristi/catalyst-backend-task/pkg/database"
 )
 
+// run the migration
+// command: go run main.go migrate
 var (
 	migrateCmd = &cobra.Command{
 		Use:   "migrate",

@@ -86,6 +86,21 @@ func (t *BrandRepositoryTestSuite) TestCreateFailedExecute() {
 	}
 }
 
+func (t *BrandRepositoryTestSuite) TestCreateFailedLastInsertId() {
+	ctx := context.Background()
+	t.mock.ExpectQuery(regexp.QuoteMeta(brandNameExist)).WithArgs("name").WillReturnError(sql.ErrNoRows)
+	t.mock.ExpectExec(regexp.QuoteMeta(createBrand)).WithArgs("name", database.AnyTime{}).WillReturnResult(sqlmock.NewErrorResult(sql.ErrConnDone))
+	result, err := t.brandRepository.Create(ctx, "name")
+
+	t.Nil(result)
+	if err != nil {
+		t.Error(err)
+	}
+	if err := t.mock.ExpectationsWereMet(); err != nil {
+		t.Error(err)
+	}
+}
+
 func (t *BrandRepositoryTestSuite) TestCreateDuplicateBrandNameFailed() {
 	ctx := context.Background()
 	t.mock.ExpectQuery(regexp.QuoteMeta(brandNameExist)).WithArgs("name").WillReturnRows(sqlmock.NewRows([]string{"1"}).AddRow(1))

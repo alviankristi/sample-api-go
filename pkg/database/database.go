@@ -8,6 +8,7 @@ import (
 	"github.com/alviankristi/catalyst-backend-task/config"
 )
 
+//create db connection
 func Open(config *config.Config) *sql.DB {
 	db, err := sql.Open("mysql", config.DbConfig.ConnectionString)
 	if err != nil {

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/alviankristi/catalyst-backend-task/internal/repository"
 	"github.com/alviankristi/catalyst-backend-task/internal/repository/entity"
+	mockRepo "github.com/alviankristi/catalyst-backend-task/internal/repository/mock"
 	"github.com/alviankristi/catalyst-backend-task/internal/service/model"
 	"github.com/alviankristi/catalyst-backend-task/pkg/response"
 	"github.com/stretchr/testify/mock"
@@ -16,7 +16,7 @@ import (
 type BrandServiceTestSuite struct {
 	suite.Suite
 	brandService        BrandService
-	brandRepositoryMock *repository.BrandRepositoryMock
+	brandRepositoryMock *mockRepo.BrandRepositoryMock
 }
 
 func TestBrandServiceTestSuiteTestSuite(t *testing.T) {
@@ -24,7 +24,7 @@ func TestBrandServiceTestSuiteTestSuite(t *testing.T) {
 }
 
 func (t *BrandServiceTestSuite) SetupTest() {
-	t.brandRepositoryMock = new(repository.BrandRepositoryMock)
+	t.brandRepositoryMock = new(mockRepo.BrandRepositoryMock)
 
 	t.brandService = NewBrandService(t.brandRepositoryMock)
 }

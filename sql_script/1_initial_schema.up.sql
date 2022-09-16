@@ -28,8 +28,9 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 -- Dumping structure for table catalyst_backend_task.transactions
 CREATE TABLE IF NOT EXISTS `transactions` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_transactions_customers` (`customer_id`),
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 
 -- Dumping structure for table catalyst_backend_task.transaction_details
 CREATE TABLE IF NOT EXISTS `transaction_details` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `transaction_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `total_order` int(11) NOT NULL,

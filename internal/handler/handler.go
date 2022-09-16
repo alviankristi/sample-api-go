@@ -18,5 +18,8 @@ func NewHandler(db *sql.DB) *http.ServeMux {
 	service := service.NewService(repo)
 	mux := http.NewServeMux()
 	mux.Handle("/brand", NewBrandHandler(service))
+	mux.Handle("/product", NewProductHandler(service))
+	mux.Handle("/product/brand", NewProductHandler(service))
+	mux.Handle("/order", NewTransactionHandler(service))
 	return mux
 }

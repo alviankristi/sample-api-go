@@ -5,12 +5,16 @@ import (
 )
 
 type Service struct {
-	BrandService BrandService
+	BrandService       BrandService
+	ProductService     ProductService
+	TransactionService TransactionService
 }
 
 //create service
 func NewService(repository *repository.Repository) *Service {
 	return &Service{
-		BrandService: NewBrandService(repository.BrandRepository),
+		BrandService:       NewBrandService(repository.BrandRepository),
+		ProductService:     NewProductService(repository.ProductRepository),
+		TransactionService: NewTransactionService(repository.TransactionRespository),
 	}
 }

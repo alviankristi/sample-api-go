@@ -29,8 +29,8 @@ func RenderInvalidDecodeRequestBody(w http.ResponseWriter) {
 	w.Write(resp)
 }
 
-//return list
-func List(w http.ResponseWriter, payload interface{}) {
+//return get 200
+func Ok(w http.ResponseWriter, payload interface{}) {
 	data := &baseResponse{
 		Data: payload,
 	}

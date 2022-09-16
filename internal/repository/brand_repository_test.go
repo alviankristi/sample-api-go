@@ -114,8 +114,22 @@ func (t *BrandRepositoryTestSuite) TestCreateDuplicateBrandNameFailed() {
 	t.ErrorIs(err, response.BrandNameDuplicate)
 }
 
+func (t *BrandRepositoryTestSuite) TestCreateDuplicateBrandNameDatabaseError() {
+	ctx := context.Background()
+	t.mock.ExpectQuery(regexp.QuoteMeta(brandNameExist)).WithArgs("name").WillReturnError(sql.ErrConnDone)
+	t.mock.ExpectExec(regexp.QuoteMeta(createBrand)).WithArgs("name", database.AnyTime{}).WillReturnError(errors.New("Error"))
+	result, err := t.brandRepository.Create(ctx, "name")
+	if err := t.mock.ExpectationsWereMet(); err != nil {
+		t.Error(err)
+	}
+
+	t.Nil(result)
+	t.ErrorIs(err, response.DatabaseError)
+}
+
 func (t *BrandRepositoryTestSuite) TestCreateFailed() {
 	ctx := context.Background()
+	t.mock.ExpectQuery(regexp.QuoteMeta(brandNameExist)).WithArgs("name").WillReturnError(sql.ErrNoRows)
 	t.mock.ExpectExec(regexp.QuoteMeta(createBrand)).WithArgs("name", database.AnyTime{}).WillReturnError(errors.New("Error"))
 	result, err := t.brandRepository.Create(ctx, "name")
 	if err := t.mock.ExpectationsWereMet(); err != nil {

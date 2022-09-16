@@ -22,10 +22,14 @@ func (a *AppErrorResponse) Error() string {
 }
 
 var (
-	ValidationError          = &AppErrorResponse{Message: "validation error", ApplicationCode: 1}
-	DatabaseError            = &AppErrorResponse{Message: "database error", ApplicationCode: 2}
-	BrandNameDuplicate       = &AppErrorResponse{Message: "duplicate brand name", ApplicationCode: 3}
-	InvalidDecodeRequestBody = &AppErrorResponse{Message: "decode request body failed", ApplicationCode: 4}
+	ValidationError            = &AppErrorResponse{Message: "validation error", ApplicationCode: 1}
+	DatabaseError              = &AppErrorResponse{Message: "database error", ApplicationCode: 2}
+	BrandNameDuplicate         = &AppErrorResponse{Message: "duplicate brand name", ApplicationCode: 3}
+	InvalidDecodeRequestBody   = &AppErrorResponse{Message: "decode request body failed", ApplicationCode: 4}
+	BrandProductNameDuplicate  = &AppErrorResponse{Message: "duplicate product name", ApplicationCode: 5}
+	TransactionProductNotFound = &AppErrorResponse{Message: "transaction failed, product not found", ApplicationCode: 6}
+	TransactionFailed          = &AppErrorResponse{Message: "transaction failed", ApplicationCode: 6}
+	TransactionOrderEmpty      = &AppErrorResponse{Message: "transaction order empty", ApplicationCode: 6}
 )
 
 type ErrResponse struct {

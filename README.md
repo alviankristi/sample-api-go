@@ -18,4 +18,4 @@
 ```
     go run main.go serve
 ```
-3. For postman user, please import the collection [here](/New%20Collection.postman_collection.json)
+3. For postman user, please import the collection [here](/Catalyst-BackendTask.postman_collection.json)

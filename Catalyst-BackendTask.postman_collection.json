@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "17da3e09-c5b1-426c-b358-d0427fb7cefd",
+		"name": "Catalyst-BackendTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19955109"
+	},
+	"item": [
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "Create brand",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Brand A\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/brand",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"brand"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create brand",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Brand A\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:3000/brand",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"brand"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": {\r\n        \"name\": \"Brand A\",\r\n        \"id\": 1\r\n    }\r\n}"
+						},
+						{
+							"name": "Create duplicate brand",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Brand A\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:3000/brand",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"brand"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\": \"Invalid request.\",\r\n    \"code\": 3,\r\n    \"error\": \"duplicate brand name\"\r\n}"
+						},
+						{
+							"name": "Validation error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "localhost:3000/brand",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"brand"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\": \"validation error\",\r\n    \"errors\": [\r\n        \"Name: required\"\r\n    ],\r\n    \"code\": 1,\r\n    \"error\": \"validation error\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"product 3\",\r\n    \"brand_id\":1,\r\n    \"price\":1000\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"product 3\",\r\n    \"brand_id\":1,\r\n    \"price\":1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/product",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": {\r\n        \"name\": \"product 3\",\r\n        \"brand_id\": 1,\r\n        \"price\": 1000,\r\n        \"id\": 3\r\n    }\r\n}"
+						},
+						{
+							"name": "Duplicate product error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"product 3\",\r\n    \"brand_id\":1,\r\n    \"price\":1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/product",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\": \"Invalid request.\",\r\n    \"code\": 5,\r\n    \"error\": \"duplicate product name\"\r\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"product 3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/product",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\": \"validation error\",\r\n    \"errors\": [\r\n        \"BrandId: required\",\r\n        \"Price: required\"\r\n    ],\r\n    \"code\": 1,\r\n    \"error\": \"validation error\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/product?id=10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/product?id=10",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": {\r\n        \"name\": \"product 1\",\r\n        \"brand_id\": 1,\r\n        \"price\": 1000,\r\n        \"id\": 1\r\n    }\r\n}"
+						},
+						{
+							"name": "Get product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/product?id=100",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": null\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get product by brand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/product/brand?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"brand"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get product by brand not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/product/brand?id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product",
+										"brand"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": []\r\n}"
+						},
+						{
+							"name": "Get product by brand",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/product/brand?id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"product",
+										"brand"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": [\r\n        {\r\n            \"name\": \"product 1\",\r\n            \"brand_id\": 1,\r\n            \"price\": 1000,\r\n            \"id\": 1\r\n        },\r\n        {\r\n            \"name\": \"product 2\",\r\n            \"brand_id\": 1,\r\n            \"price\": 1000,\r\n            \"id\": 2\r\n        },\r\n        {\r\n            \"name\": \"product 3\",\r\n            \"brand_id\": 1,\r\n            \"price\": 1000,\r\n            \"id\": 3\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Create transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\":1,\r\n    \"orders\":[\r\n        {\r\n            \"product_id\":1,\r\n            \"total_order\":2\r\n        },\r\n        {\r\n            \"product_id\":2,\r\n            \"total_order\":4\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/order",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customer_id\":1,\r\n    \"orders\":[\r\n        {\r\n            \"product_id\":1,\r\n            \"total_order\":2\r\n        },\r\n        {\r\n            \"product_id\":2,\r\n            \"total_order\":4\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "localhost:3000/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": {\r\n        \"id\": 14,\r\n        \"customer_id\": 2,\r\n        \"amount\": 6000,\r\n        \"orders\": [\r\n            {\r\n                \"id\": 13,\r\n                \"product_id\": 1,\r\n                \"total_order\": 2,\r\n                \"total_price\": 2000\r\n            },\r\n            {\r\n                \"id\": 14,\r\n                \"product_id\": 2,\r\n                \"total_order\": 4,\r\n                \"total_price\": 4000\r\n            }\r\n        ]\r\n    }\r\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customer_id\":1\r\n    \r\n}"
+								},
+								"url": {
+									"raw": "localhost:3000/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\": \"validation error\",\r\n    \"errors\": [\r\n        \"Orders: required\"\r\n    ],\r\n    \"code\": 1,\r\n    \"error\": \"validation error\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get transaction",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/order?transactionID=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order"
+							],
+							"query": [
+								{
+									"key": "transactionID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get transaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3000/order?transactionID=1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order"
+									],
+									"query": [
+										{
+											"key": "transactionID",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": {\r\n        \"id\": 5,\r\n        \"customer_id\": 1,\r\n        \"customer_name\": \"customer A\",\r\n        \"amount\": 2000,\r\n        \"orders\": [\r\n            {\r\n                \"id\": 1,\r\n                \"product_id\": 1,\r\n                \"product_name\": \"product 1\",\r\n                \"total_order\": 1,\r\n                \"price\": 1000,\r\n                \"total_price\": 1000,\r\n                \"brand_id\": 1,\r\n                \"brand_name\": \"Brand A\"\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"product_id\": 2,\r\n                \"product_name\": \"product 2\",\r\n                \"total_order\": 1,\r\n                \"price\": 1000,\r\n                \"total_price\": 1000,\r\n                \"brand_id\": 1,\r\n                \"brand_name\": \"Brand A\"\r\n            }\r\n        ]\r\n    }\r\n}"
+						},
+						{
+							"name": "Get transaction not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3000/order?transactionID=1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order"
+									],
+									"query": [
+										{
+											"key": "transactionID",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"data\": null\r\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

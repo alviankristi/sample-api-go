@@ -210,8 +210,8 @@
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": null,
 							"header": null,
 							"cookie": [],
@@ -311,7 +311,7 @@
 							"body": "{\r\n    \"data\": {\r\n        \"name\": \"product 1\",\r\n        \"brand_id\": 1,\r\n        \"price\": 1000,\r\n        \"id\": 1\r\n    }\r\n}"
 						},
 						{
-							"name": "Get product",
+							"name": "Get product not found",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -473,6 +473,8 @@
 									]
 								}
 							},
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": null,
 							"header": null,
 							"cookie": [],

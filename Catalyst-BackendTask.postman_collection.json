@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "17da3e09-c5b1-426c-b358-d0427fb7cefd",
-		"name": "Catalyst-BackendTask",
+		"name": "Sample-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19955109"
 	},
